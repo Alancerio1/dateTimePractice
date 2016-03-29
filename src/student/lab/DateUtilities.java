@@ -8,6 +8,7 @@ package student.lab;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -19,6 +20,7 @@ public class DateUtilities {
 
     public static void main(String[] args) throws ParseException {
         String format = "M/d/yy h:mm:ss a";
+        DateFormat sdf2 = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         SimpleDateFormat sdf = new SimpleDateFormat(format);
         DateFormat df = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
 
@@ -31,9 +33,12 @@ public class DateUtilities {
         String reportDate = df.format(todayDate);
         System.out.println("Today's date: " + reportDate);
         
-        Calendar date2 = Calendar.getInstance();
-        System.out.println("Current " + df.format(date1.getTime()));
-        date2.add(Calendar.DATE, 10);
-        System.out.println("10 days adding "+ df.format(date2.getTime()));
+        String d = sdf2.format(todayDate);
+        System.out.println("Format 2 " + reportDate);
+         
+        
+        LocalDateTime today = LocalDateTime.now();
+        LocalDateTime changedDay = today.plusDays(15);
+        System.out.println(changedDay);
     }
 }
